@@ -11,12 +11,18 @@
     </tr>
     </thead>
 
+
+
     <tbody>
     <% @patient.prescriptions.each do |prescription| %>
         <tr>
             <td> <%= prescription.medication_name %> </td>
             <td> <%= prescription.dosage_with_schedule %> </td>
             <td> <%= prescription.dates %> </td>
+            <td>
+              <%= link_to 'Destroy', patient_prescription_path(@patient,prescription),
+              method: :delete, data: {confirm: 'Are you sure?', class: "btn btn-danger"} %>
+            </td>
         </tr>
     <% end %>
     </tbody>

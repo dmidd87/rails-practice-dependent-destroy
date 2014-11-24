@@ -4,6 +4,16 @@ class PrescriptionsController < ApplicationController
     @prescription = Prescription.new
   end
 
+  def destroy
+    @prescription = Prescription.find(params[:id])
+    @prescription.destroy
+    redirect_to patient_path
+  end
+
+  def show
+
+  end
+
   def create
     @patient = Patient.find(params[:patient_id])
     @prescription = Prescription.new(
@@ -17,7 +27,6 @@ class PrescriptionsController < ApplicationController
     else
       render :new
     end
-
   end
 
   private
